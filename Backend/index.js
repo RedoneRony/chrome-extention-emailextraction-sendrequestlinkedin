@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { Configuration, OpenAIApi } = require("openai");
+const axios = require("axios");
+
 require("dotenv").config(); // Import dotenv
 
 const app = express();
@@ -11,12 +12,9 @@ const PORT = 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-// // OpenAI Configuration
-// const openai = new OpenAIApi(
-//     new Configuration({
-//         apiKey: process.env.OPENAI_API_KEY, // Replace with your OpenAI API key
-//     })
-// );
+const url = "https://api.openai.com/v1/chat/completions";
+const apiKey = process.env.OPENAI_API_KEY;
+
 
 // API Endpoint
 app.post("/api/email", async (req, res) => {
@@ -41,19 +39,28 @@ app.post("/api/email", async (req, res) => {
   `;
 
     try {
-        // const response = await openai.createCompletion({
-        //     model: "gpt-4o-mini", // GPT-4o Mini model
-        //     prompt,
-        //     max_tokens: 100,
-        //     temperature: 0.7,
-        // });
 
-        // const message = response.data.choices[0].text.trim();
+        const response = await axios.post(
+            url,
+            {
+                model: 'gpt-4',
+                messages: [{ role: 'user', content: prompt }],
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`,
+                },
+            }
+        );
+
+        // get response from open ai
+        const message = response.data.choices[0].message.content;
 
         return res.status(200).json({
             success: true,
             email,
-            // message,
+            message,
         });
     } catch (error) {
         console.error("Error with OpenAI API:", error.message);
