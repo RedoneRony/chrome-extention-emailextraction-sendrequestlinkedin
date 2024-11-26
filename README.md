@@ -1,6 +1,6 @@
 **LinkedIn Email Extractor**
 
-LinkedIn Email Extractor is a Chrome extension that extracts email addresses from LinkedIn profiles and sends the extracted email to a backend API for processing. This extension is designed for simplicity and ease of use, leveraging Chrome Extension APIs to interact with LinkedIn pages.
+LinkedIn Email Extractor is a Chrome extension that extracts email addresses from LinkedIn profiles and sends the extracted email to a backend API for processing. This extension is designed for simplicity and ease of use, leveraging Chrome Extension APIs to interact with LinkedIn pages. Also you can make connection request with the help of Generative AI from this.
 
 **Features**
 
@@ -84,6 +84,11 @@ document.getElementById("extract-email").addEventListener("click", () => {
         );
     });
 });
+
+5. **Make Connection request in Linkedin through  AI**
+
+Finally in backend from the help of ai it will make connection request.
+
 
 **Installation**
 **Clone the repository:**
