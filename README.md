@@ -20,27 +20,24 @@ Configures background scripts, content scripts, and the popup interface.
 2. Background Script (background.js)
 Handles the extension's installation event and initializes the service worker.
 
-javascript
-Copy code
 chrome.runtime.onInstalled.addListener(() => {
     console.log("LinkedIn Email Extractor installed.");
 });
+
 3. Content Script (content.js)
 Executes within the context of LinkedIn pages to scan and extract email addresses.
 
-javascript
-Copy code
+
 (() => {
     const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
     const profileText = document.body.innerText;
     const foundEmail = profileText.match(emailRegex);
     return foundEmail ? foundEmail[0] : null;
 })();
+
 4. Popup File (popup.html)
 Defines the user interface for the extension, including a button to extract emails and a display area for results.
 
-html
-Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,11 +55,10 @@ Copy code
     <script src="popup.js"></script>
 </body>
 </html>
+
 5. Popup Script (popup.js)
 Handles user interactions and coordinates between the extension's content scripts and backend API.
 
-javascript
-Copy code
 document.getElementById("extract-email").addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript(
@@ -104,12 +100,10 @@ document.getElementById("extract-email").addEventListener("click", () => {
         );
     });
 });
+
 Installation
 Clone the repository:
-
-bash
-Copy code
-git clone https://github.com/yourusername/linkedin-email-extractor.git
+git clone https://github.com/RedoneRony/chrome-extention-emailextraction-sendrequestlinkedin
 cd linkedin-email-extractor
 Open Chrome and navigate to chrome://extensions.
 
@@ -125,15 +119,15 @@ View the extracted email and backend response.
 Backend API
 The extension sends a POST request to the backend at http://localhost:3000/api/email. The API should accept a JSON payload in the following format:
 
-json
-Copy code
 {
     "email": "extracted_email@example.com"
 }
+
 The API response should include a success field to indicate the status and optionally an email field with additional information.
 
 License
-This project is open-source and available under the MIT License.
+This project is open-source.
 
 Contributions
+
 Contributions, bug reports, and feature requests are welcome! Feel free to fork the repository and submit a pull request.
