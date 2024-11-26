@@ -38,23 +38,7 @@ Executes within the context of LinkedIn pages to scan and extract email addresse
 4. Popup File (popup.html)
 Defines the user interface for the extension, including a button to extract emails and a display area for results.
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Extractor</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Email Extractor</h1>
-        <button id="extract-email">Extract Email</button>
-        <p id="email-display">No email found.</p>
-    </div>
-    <script src="popup.js"></script>
-</body>
-</html>
+
 
 5. Popup Script (popup.js)
 Handles user interactions and coordinates between the extension's content scripts and backend API.
