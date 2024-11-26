@@ -88,7 +88,9 @@ document.getElementById("extract-email").addEventListener("click", () => {
 **Installation**
 **Clone the repository:**
 git clone https://github.com/RedoneRony/chrome-extention-emailextraction-sendrequestlinkedin
+
 cd linkedin-email-extractor
+
 Open Chrome and navigate to chrome://extensions.
 
 Enable Developer Mode.
