@@ -23,7 +23,7 @@ document.getElementById("extract-email").addEventListener("click", () => {
                         .then((response) => response.json())
                         .then((data) => {
                             if (data.success) {
-                                displayElement.textContent = `Generated Message: ${data.email}`;
+                                displayElement.textContent = `Response Message: ${data.message}`;
                             } else {
                                 displayElement.textContent = `Backend Error: ${data.email}`;
                             }
